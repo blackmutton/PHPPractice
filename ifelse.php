@@ -14,6 +14,7 @@
     $a=10;<br>
     $b=50;<br>
    </div>
+   <a href="./index.html">回首頁</a>
         <h4>交換後</h4>
         <?php
         $a=10;
