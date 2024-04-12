@@ -33,6 +33,7 @@ echo "<br>";
 echo '調整結果='.$score;
 
 echo '<br>';
+echo '<hr>';
 $score=59;
 echo '原始成績='.$score;
 while($score >=0){
@@ -41,3 +42,58 @@ while($score >=0){
 
 echo '<br>';
 echo '調整結果='.$score;
+?>
+
+<h2>巢狀結構</h2>
+<?php
+
+for($i=0 ; $i<10 ; $i++){
+    echo $i*10;
+
+    if($i>5){
+        echo "執行一半了...";
+    }
+    echo '<br>';
+}
+echo '<br>';
+echo '<hr>';
+
+for($i=0 ; $i<10 ; $i++){
+    echo $i*10;
+    echo '<br>';
+    if($i>5){
+        echo "執行一半了...";
+    }
+    
+}
+echo '<br>';
+echo '<hr>';
+
+$executehalf=false;
+
+for($i=0 ; $i<10 ; $i++){
+    echo $i*10;
+    
+    if($i>5 && $executehalf==false){
+        echo "執行一半了...";
+        $executehalf=true;
+    }
+    echo '<br>';
+}
+echo '<br>';
+echo '<hr>';
+/* if中只放變數的應用 */
+/* 在php中0跟null代表false，其他都代表true，包含小數、負數等等 */
+$a=true;
+if($a){
+    echo 'True';
+}else{
+    echo 'False';
+}
+?>
+
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
