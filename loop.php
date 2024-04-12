@@ -24,10 +24,20 @@ echo $i;
 <?php
 
 $score=10;
-echo "原始成績"=$score;
+echo '原始成績='.$score;
 while ($score<60) {
     $score=$score+10;
 }
 
 echo "<br>";
+echo '調整結果='.$score;
+
+echo '<br>';
+$score=59;
+echo '原始成績='.$score;
+while($score >=0){
+    $score-=6;
+}
+
+echo '<br>';
 echo '調整結果='.$score;
