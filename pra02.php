@@ -118,6 +118,33 @@ for($i=0 ; $i<=9;$i++){
 
 echo "</table>";
 ?>
+<h2>尋找字元(使用while)</h2>
+
+<ul>
+    <li>給定一個字串句子</li>
+    <li>給定一個單字或字母</li>
+    <li>尋找相符的內容</li>
+    <li>印出尋找到的單字或字母所在句子中的位置</li>
+    <p>人對於訴說追求慾望的文本總是充滿興趣，大概也是因為這樣才會有人著迷於某些歷史的片段，又被《浮士德》所吸引，甚至在視角上總會情不自禁地帶入梅菲斯特的位置。</p>
+</ul>
+<?php
+$str="人對於訴說追求慾望的文本總是充滿興趣，大概也是因為這樣才會有人著迷於某些歷史的片段，又被《浮士德》所吸引，甚至在視角上總會情不自禁地帶入梅菲斯特的位置。";
+$target="慾望";
+/* 取出部分字串？
+計算字串長度 */
+$position=0;
+while($target!=mb_substr($str,$position,mb_strlen($target))){
+    echo "p=".$position;
+    echo ", substr= ".mb_substr($str,$position,mb_strlen($target));
+    echo "<br>";
+    $position++;
+}
+
+echo $target."的位置在".$position;
+echo "<br>";
+echo mb_strpos($str,$target);
+
+?>
 <p>&nbsp;</p>
 <p>&nbsp;</p>
 <p>&nbsp;</p>
