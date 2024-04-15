@@ -30,16 +30,18 @@
         text-align:center;
         
     }
-    tr:nth-child(odd){
+   /*  tr:nth-child(odd){
         background-color:grey;
-    }
+    } */
     td:hover{
         font-size:x-large;
         color:red;
+        background:white;
     }
-    td{
+    tr,td{
         padding:5px;
         border:1px solid black;
+        font-size:20px;
         vertical-align:center;
     }
 </style>
@@ -59,5 +61,69 @@ for($i=1 ; $i<=9;$i++){
 }
 echo "</table>";
 ?>
+<h2>九九乘法表-棋盤式表格</h2>
+<style>
+    #grid table{
+        border-collapse: collapse;
+    }
+    #grid td{
+        border:1px solid gray;
+        padding: 3px 6px;
+        font-size:18px;
+    }
+    #grid tr:nth-child(1),
+    #grid td:nth-child(1){
+        background:black;
+        color:#CCC;
+    }
+</style>
+<?php
+echo "<table id='grid'>";
+for($i=0 ; $i<=9;$i++){ 
+
+    echo "<tr>";
+
+    for($j=0; $j<=9; $j++){
+        echo "<td>";
+        if($i==0 && $j==0 || ($i!=0&&$j>$i)){
+            //if第一個判斷式須將範圍限縮，否則會無法再繼續下去
+            //增加$i!=0&&$j>$i的判斷式是為了讓表格數字呈現對角線
+            echo " ";
+        }else if($i==0){
+            //控制第一行的表現，若不特別設定會呈現$i*$j(0*$j)的值
+            echo $j;
+        }else if($j==0){
+            //控制第一列的表現，若不特別設定會呈現$i*$j($i*0)的值
+            echo $i;
+        }else{
+            echo ($i*$j);
+         }
+        
+         echo "</td>";
+    }
+    echo "</tr>";
+}
+
+    //另一個思路
+    /* if($i*$j!=0){
+        //一開始便限定只有在什麼情況下才印出$i*$j
+            echo $i*$j;
+        }else if($j==0 && $i!=0){
+            echo $i;
+        }else if($j!=0 && $i==0){
+            echo $j;
+        }else{
+            echo " ";
+        } */
+
+echo "</table>";
+?>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
 </body>
 </html>
