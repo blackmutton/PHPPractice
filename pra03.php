@@ -46,16 +46,63 @@ for($i=$stars;$i>0;$i--){
 <?php
 for($i=0;$i<$stars;$i++){
     for($k=0;$k<$stars-$i;$k++){
+        //空白數為4,3,2,1，剛好是$stars-1-$i的遞減
         echo "&nbsp;";
         //unbreak space
+        //為讓星星能對齊，因此須將自行改成等寬字型
     }
     for($j=0;$j<$i*2+1;$j++){
-        
+        //*的數量剛好為$i*2+1
         echo "*";
     }
     echo "<br>";
 }
 
+?>
+<h2>菱形</h2>
+<?php
+//菱形草稿版
+/* for($i=0;$i<$stars;$i++){
+    for($k=0;$k<$stars-1-$i;$k++){      
+        echo "&nbsp;";    
+    }
+    for($j=0;$j<$i*2+1;$j++){
+        echo "*";
+    }
+    echo "<br>";
+}
+for($i=$stars-1;$i>0;$i--){
+    for($k=0;$k<$stars-$i;$k++){      
+        echo "&nbsp;";    
+    }
+    for($j=0;$j<$i*2-1;$j++){
+        echo "*";
+    }
+    echo "<br>";
+} */
+$odd=($stars%2==0)?$stars+1:$stars;
+$mid=(($odd+1)/2)-1;
+
+/* 
+5 3
+7 4
+但從0開始算
+*/
+for($i=0;$i<$stars;$i++){
+    if($i<=$mid){
+    $tmp=$i;
+}else{
+    $tmp--;
+}
+
+for($k=0;$k<$mid-$tmp;$k++){      
+    echo "&nbsp;";    
+}
+for($j=0;$j<$tmp*2+1;$j++){
+    echo "*";
+}
+echo "<br>";
+}
 ?>
 </body>
 </html>
