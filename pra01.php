@@ -181,7 +181,7 @@ $count=0;
 for ($i=3; $i <100 ; $i++) {
     $check =true; 
     // 已經得知1一定可以整除，而其因數一定會在平方根以內，因此可省略
-    for ($j=2; $j <= sqrt($i/2); $j++) { 
+    for ($j=2; $j <= sqrt($i); $j++) { 
         if($i%$j==0){
             $check=false;
         }
