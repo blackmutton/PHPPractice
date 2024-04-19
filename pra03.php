@@ -104,5 +104,66 @@ for($j=0;$j<$tmp*2+1;$j++){
 echo "<br>";
 }
 ?>
+
+<h2>矩形</h2>
+<?php
+$n=7;
+for($row=1;$row<=$n;$row++){
+    for($col=1;$col<=$n;$col++){
+        // 只有第一行跟第N行有印出星星
+        if($row==1||$row==$n){
+        echo "*";
+        }else if($col==1||$col==$n){
+            // 只有第一列跟第N列有印出星星
+            echo "*";
+        }else{
+        echo "&nbsp;";
+        }
+    }
+  echo "<br>";      
+}
+?>
+
+<h2>有交叉的矩形</h2>
+<?php
+$n=7;
+for($row=1;$row<=$n;$row++){
+    for($col=1;$col<=$n;$col++){
+        if($row==1||$row==$n){
+        echo "*";
+        }else if($col==1||$col==$n|| $col==$row ||$col==($n-$row+1)){
+        
+            echo "*";
+        }else{
+            echo "&nbsp;";
+            }
+        }
+echo "<br>";      
+}
+/* <h2>矩形含對角線</h2>  
+<?php
+    for($i=0;$i<7;$i++){
+        
+        for($j=0;$j<7;$j++){
+            if($i==0 || $i==6){
+                echo "*";
+            }else if($j==0 || $j==6 || $j==$i || $j==(6-$i)){
+                echo "*";
+            }else{
+                echo "&nbsp;";
+            }
+
+        }
+        echo "<br>";
+
+    } */
+?>
+
+
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
 </body>
 </html>
