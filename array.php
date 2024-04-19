@@ -96,9 +96,29 @@
         // echo "<br>";
         // 陣列不需要換行
     }
-    echo "<pre>";//使用pre就可以讓網頁如實呈現程式碼的排版，不會被網頁自動壓縮空白
+    /* echo "<pre>";//使用pre就可以讓網頁如實呈現程式碼的排版，不會被網頁自動壓縮空白
     print_r($ninenine);
-    echo "</pre>";
+    echo "</pre>"; */
+
+    // 變數需設在外面，否則會重置
+    $count=1;
+    foreach($ninenine as $value){
+        echo $value;
+        
+        if($count%9==0){
+            echo "<br>";
+        }
+        $count++;
+    }
+
+    /*另一個寫法(在一開始便指定key=>value)
+     foreach($ninenine as $idx=>$value){
+        echo $value;
+        
+        if($idx+1%9==0){
+            echo "<br>";
+        }
+    } */
     ?>
 </body>
 </html>
