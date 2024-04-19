@@ -86,6 +86,14 @@
         <li>將九九乘法表的每個項目以字串型式存入陣列中</li>
         <li>再以迴圈方式將陣列內容印出</li>
     </ul>
+    <style>
+        table{
+            border-collapse:collapse;
+        }
+        tr,td{
+            border:1px black solid;
+        }
+</style>
     <?php
     $ninenine=[];
     for($i=1;$i<=9;$i++){
@@ -119,6 +127,20 @@
             echo "<br>";
         }
     } */
+    echo "<hr>";
+    echo "<table>";
+    
+    foreach($ninenine as $idx=>$nine){
+        if($idx%9==0){
+
+            echo "<tr>";
+        }    
+            echo "<td>$nine</td>";
+        }if($idx+1%9==0){
+            echo "</tr>";
+        }
+  
+    echo "</table>";
     ?>
 </body>
 </html>
