@@ -141,6 +141,40 @@
         }
   
     echo "</table>";
+
+    echo "陣列中有".count($ninenine)."個元素";
     ?>
+
+    <h2>威力彩電腦選號沒有重覆號碼(利用while迴圈)</h2>
+    <ul>
+        <li>使用亂數函式rand($a,$b)來產生號碼</li>
+        <li>將產生的號碼順序存入陣列中</li>
+        <li>每次存入陣列中時會先檢查陣列中的資料有沒有重覆</li>
+        <li>完成選號後將陣列內容印出</li>
+    </ul>
+
+    <?php
+    /* 
+    亂數產生數字
+    迴圈產生6個1~38數字
+    比較數字
+    陣列存放數字(存放比較後不重複的數字)
+    */
+    $lotto=[];
+    while (count($lotto) <6) {
+        $tmp=rand(1,38);
+        if(!in_array($tmp,$lotto)){
+            $lotto[]=$tmp;
+        }
+    }
+
+    echo join(",",$lotto);
+
+    ?>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
 </body>
 </html>
