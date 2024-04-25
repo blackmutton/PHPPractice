@@ -191,7 +191,7 @@ for($i=$year;$i<($year+500);$i++){
 echo "<h3>自$year 至".($year+500)."止，有以下閏年：</h3>";
 foreach($leaps as $leap){
     echo $leap;
-    echo "<br>";
+    echo " /";
 }
 
 echo "<hr>";
@@ -216,6 +216,24 @@ $t1=$sky[$year%10];
 $t2=$land[$year%12];
 
 echo "為$t1$t2 年";
+?>
+<h2>請設計一支程式，在不產生新陣列的狀況下，將一個陣列的元素順序反轉(利用迴圈)</h2>
+<ul>
+    <li>例：$a=[2,4,6,1,8] 反轉後 $a=[8,1,6,4,2]</li>
+</ul>
+<?php
+$a=[2,4,6,1,8];
+echo "原陣列為:[".join(',',$a)."]<br>";
+// ceil代表無條件進位法的函式
+for($i=0;$i<ceil(count($a)/2);$i++){
+    $tmp=$a[$i];
+    $a[$i]=$a[count($a)-1-$i];
+    $a[count($a)-1-$i]=$tmp;
+}
+
+echo "交換後為:[".join(',',$a)."]<br>";
+// 由於a已經等於[8,1,6,4,2]，故再用array_reverse()反轉會變原來的陣列
+echo "交換後為:[".join(',',array_reverse($a))."]<br>";
 ?>
 <p>&nbsp;</p>
 <p>&nbsp;</p>
