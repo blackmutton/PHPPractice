@@ -29,6 +29,23 @@
     echo $diff/(60*60*24);
     ?>
     <h2>計算距離自己下一次生日還有幾天</h2>
+    <?php
+    echo "今年是".date("Y");
+    echo "<br>";
+    echo "今天是".date("Y年m月d日");
+    echo "<br>";
+    $birthday='1999-4-1';
+    // date可以轉換為時間，預設為今天日期
+    $today=strtotime(date('Y-m-d'));
+    $tb=str_replace(mb_substr($birthday,0,4),date('Y'),$birthday);
+    if(strtotime($tb)<strtotime('now')){
+        $tb=str_replace(mb_substr($birthday,0,4),(date("Y")+1),$birthday);
+    }
+    $birthday=strtotime($tb);
+    $diff=$birthday-$today;
+    // floor為無條件捨去法
+    echo floor($diff/(60*60*24));
+    ?>
     <h2>利用date()函式的格式化參數，完成以下的日期格式呈現</h2>
 <ul>
     <li>2021/10/05</li>
