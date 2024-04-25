@@ -31,5 +31,14 @@
     print_r($result);
     echo "</pre>";
     ?>
+    <h2>字串組合</h2>
+    <ul>
+        <li>將上例陣列重新組合成“this is a book”</li>
+    </ul>
+    <?php
+    $result=join(' ',$result);
+    echo $result;
+    ?>
+    
 </body>
 </html>
