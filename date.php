@@ -43,7 +43,7 @@
     }
     $birthday=strtotime($tb);
     $diff=$birthday-$today;
-    // floor為無條件捨去法
+    // floor為無條件捨去法，因應之後如果有人在設定時間時恰好碰到日光節約時間或是取的時間是採用date('now')導致不是從00:00開始而產生小數
     echo floor($diff/(60*60*24));
     ?>
     <h2>利用date()函式的格式化參數，完成以下的日期格式呈現</h2>
@@ -54,5 +54,22 @@
     <li>2021-10-5 12:09:05</li>
     <li>今天是西元2021年10月5日 上班日(或假日)</li>
 </ul>
+<?php
+// 設定默認時區
+date_default_timezone_set('Asia/Taipei');
+echo date("Y/m/d");
+echo "<br>";
+echo date("m月j日 l");
+echo "<br>";
+// (int)date("s")可以讓秒不補0
+echo date("Y-m-j H:i:".(int)date("s"));
+echo "<br>";
+$workday=(date("N")<6)?'工作日':'假日';
+echo "今天是西元".date("Y年m月j日 l")."是$workday";
+echo "<br>";
+echo "<br>";
+
+
+?>
 </body>
 </html>
