@@ -28,9 +28,11 @@
 $month=4;
 echo "月份:".$month;
 $firstDay=strtotime(date("Y-$month-1"));
+echo "第一天為$firstDay";
 // date("w")代表星期幾，數字為0~6
 $firstWeekStartDay=date("w",$firstDay);
 echo "第一周的開始是第".$firstWeekStartDay."日";
+// 得到該月應有天數
 $days=date("t",$firstDay);
 $lastDay=strtotime(date("Y-$month-$days"));
 echo "最後一天是".date("Y-m-d",$lastDay);;
