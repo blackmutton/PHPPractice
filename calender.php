@@ -149,7 +149,7 @@ for($i=0;$i<42;$i++){
 
 /* //這樣寫能只呈現該月的日期 
 for($i=0;$i<42;$i++){
-    if($i>=$firstWeekStartDay && $i+1 <= $days){
+    if($i>=$firstWeekStartDay && $i-$firstWeekStartDay+1 <= $days){
         $diff=$i-$firstWeekStartDay;
         $dates[]=date("Y-m-d",strtotime("$diff days", $firstDay));
     }else{
