@@ -12,7 +12,7 @@
         echo "已登入";
     }else{
         ?>
-        <form action="check.php">
+        <form action="check.php" method="post">
             <div>
                 <label for="acc">
                     帳號：
