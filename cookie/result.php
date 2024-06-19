@@ -1,3 +1,6 @@
+<?php
+date_default_timezone_set("Asia/Taipei");
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -10,9 +13,12 @@
     <?php
     $acc=$_GET['acc'];
     ?>
-    歡迎<?=$_GET['acc'];?>
+    歡迎<?=$_COOKIE['login']?>
     <p>
-        <a href="login.php?login=1">回登入頁</a>
+        <!-- <a href="login.php?login=1">回登入頁</a> -->
+         <a href="login.php">回登入頁</a>
+         <br>
+         <a href="logout.php">登出</a>
     </p>
 </body>
 </html>
