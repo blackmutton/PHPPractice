@@ -47,9 +47,16 @@
             text-align:center;
             width:1000px;
         }
+        .active{
+            background-color:skyblue;
+        }
     </style>
 </head>
 <body>
+<?php
+$file=explode(".",basename(__FILE__))[0];
+// echo basename(__FILE__);
+?>
 <?php include_once "./layouts/header.php";?>
 <?php include_once "./layouts/nav.php";?>
     
