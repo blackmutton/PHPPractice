@@ -54,13 +54,22 @@
 </head>
 <body>
 <?php
-$file=explode(".",basename(__FILE__))[0];
+// $file=explode(".",basename(__FILE__))[0];
 // echo basename(__FILE__);
+$page=isset($_GET['page'])?$_GET['page']:'main';
 ?>
 <?php include_once "./layouts/header.php";?>
 <?php include_once "./layouts/nav.php";?>
     <marquee behavior="" direction="">這是一段跑馬燈</marquee>
-    <main>主要內容</main>
+    <?php
+    
+    $file="./pages/{$page}.php";
+    if(file_exists($file)){
+        include $file;
+    }else{
+        include './pages/main.php';
+    }
+    ?>
     <footer>頁腳</footer>
 </body>
 </html>
