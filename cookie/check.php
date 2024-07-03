@@ -6,6 +6,7 @@ $pw=$_POST['pwd'];
 if($acc=='acc'&&$pwd=='1234'){
     // header('location:result.php?acc='.$acc);
     setcookie('login',$acc,time()+60);
+    header("location:result.php");
 }else{
     // header("location:error.php?acc=$acc");
     // error可刪除
