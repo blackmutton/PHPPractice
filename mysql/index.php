@@ -9,6 +9,7 @@
         border: 1px solid #999;
     }
 </style>
+<a href="insert.php">新增學員</a>
 <?php
 $dsn="mysql:host=localhost;charset=utf8;dbname=school";
 $pdo=new PDO($dsn,'root','');
