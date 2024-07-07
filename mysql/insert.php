@@ -1,3 +1,7 @@
+<?php
+$dsn="mysql:host-localhost;charset=utf8;dbname=school;";
+$pdo=new PDO($dsn,'root','');
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -41,7 +45,15 @@
             </select>
         </div>
         <div>
-            <label for="graduate_at">畢業學校</label><input type="text" name="graduate_at" id="graduate_at">
+        <label for="graduate_at">畢業學校</label>
+        <select name="graduate_at" id="graduate_at">
+        <?php
+        $schools=$pdo->query('select * from graduate_school')->fetchAll();
+        foreach ($schools as $school){
+        echo "<option value='{$school['id']}'>{$school['county']}{$school['name']}</option>";
+        }
+        ?>
+        </select>
         </div>
         <div>
         <label for="status_code">畢業狀態</label>
