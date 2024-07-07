@@ -13,9 +13,9 @@
 <?php
 $dsn="mysql:host=localhost;charset=utf8;dbname=school";
 $pdo=new PDO($dsn,'root','');
-$sql="select * from `student` where `id` <30";
+$sql="select * from `students` where `id` <30";
 $db=$pdo->query($sql);
-$rows=$db->fetchAll()
+$rows=$db->fetchAll();
 /* echo "<pre>";
 print_r($rows);
 echo "</pre>";
