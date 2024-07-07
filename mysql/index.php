@@ -11,6 +11,13 @@
 </style>
 <a href="insert.php">新增學員</a>
 <?php
+if(isset($_GET['name'])){
+    echo "<span style='color:red;'>學生";
+    echo $_GET['name']."({$_GET['num']})";
+    echo "已從資料庫移除</span>";
+}
+?>
+<?php
 $dsn="mysql:host=localhost;charset=utf8;dbname=school";
 $pdo=new PDO($dsn,'root','');
 $sql="select * from `students` where `id` <30";
@@ -33,6 +40,7 @@ echo "<td>電話</td>";
 echo "<td>科系</td>";
 echo "<td>畢業學校</td>";
 echo "<td>畢業狀態</td>";
+echo "<td>操作</td>";
 echo "</tr>";
 foreach ($rows as $row) {
     echo "<tr>";
@@ -47,6 +55,10 @@ foreach ($rows as $row) {
     echo "<td>{$row['dept']}</td>";
     echo "<td>{$row['graduate_at']}</td>";
     echo "<td>{$row['status_code']}</td>";
+    echo "<td>";
+    echo "<a href='' style='margin:0 5px'>編輯</a>";
+    echo "<a href='delete.php?id={$row['id']}' style='margin:0 5px;color:red;'>刪除</a>";
+    echo "</td>";
     echo "</tr>";
 }
 
