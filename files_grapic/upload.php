@@ -36,6 +36,7 @@ session_start();
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>檔案上傳</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 </head>
 <body>
  <h1 class="header">檔案上傳練習</h1>
@@ -66,7 +67,11 @@ foreach($files as $file){
 } */
 $images=all('images');
 foreach($images as $image){
+    echo "<div class='upload-img'>";
+    echo "<a class='pen' href='edit_image.php?id={$image['id']}'><i class='fa-solid fa-pen-to-square'></i></a>";
+    echo "<a class='del' href='del_image.php?id={$image['id']}'><i class='fa-solid fa-xmark'></i></a>";
     echo "<img src='images/{$image['name']}' class='upload-img'>";
+    echo "</div>";
 }
 ?>
 
