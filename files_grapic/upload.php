@@ -18,7 +18,10 @@ session_start();
     if(move_uploaded_file($_FILES['file']['tmp_name'],"images/".$_FILES['file']['name'])){
         // $_SESSION['file'][]=$_FILES['file']['name'];
         // print_r($_SESSION);
-        
+        $data['name']=$_FILES['file']['name'];
+        $data['type']=$_FILES['file']['type'];
+        $data['size']=$_FILES['file']['size'];
+        save("images",$data);
         echo "檔案上傳成功";
     }else{
         echo "檔案上傳失敗";
@@ -56,10 +59,14 @@ session_start();
     }
 } */
 
-$files=scandir("images/");
+/* $files=scandir("images/");
 unset($files[0],$files[1]);
 foreach($files as $file){
     echo "<img src='images/{$file}' class='upload-img'>";
+} */
+$images=all('images');
+foreach($images as $image){
+    echo "<img src='images/{$image['name']}' class='upload-img'>";
 }
 ?>
 
