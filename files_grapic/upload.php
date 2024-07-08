@@ -1,4 +1,5 @@
 <?php
+include "db.php";
 session_start();
 /**
  * 1.建立表單
@@ -15,7 +16,7 @@ session_start();
     // print_r($_FILES);
     
     if(move_uploaded_file($_FILES['file']['tmp_name'],"images/".$_FILES['file']['name'])){
-        $_SESSION['file'][]=$_FILES['file']['name'];
+        // $_SESSION['file'][]=$_FILES['file']['name'];
         // print_r($_SESSION);
         
         echo "檔案上傳成功";
@@ -49,10 +50,16 @@ session_start();
 /* if(!empty($_FILES)){
     echo "<img src='images/{$_FILES['file']['name']}'>";
 } */
-if(isset($_SESSION['file'])){
+/* if(isset($_SESSION['file'])){
     foreach($_SESSION['file'] as $file){
         echo "<img src='images/{$file}' class='upload-img'";
     }
+} */
+
+$files=scandir("images/");
+unset($files[0],$files[1]);
+foreach($files as $file){
+    echo "<img src='images/{$file}' class='upload-img'>";
 }
 ?>
 
