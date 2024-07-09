@@ -17,12 +17,12 @@ function find($table,$arg){
     if(is_array($arg)){
         $tmp=array2sql($arg);
 
-        $sql.=join("&&",$tmp);
+        $sql.=join(" && ",$tmp);
     }else{
         $sql.=" `id` ='{$arg}'";
     }
-    // echo $sql;
-    $row-$pdo->query($sql)->fetch(PDO::FETCT_ASSOC);
+    echo $sql;
+    $row=$pdo->query($sql)->fetch(PDO::FETCH_ASSOC);
     return $row;
 }
 
@@ -54,8 +54,10 @@ function update($table,$cols,$arg){
 
 function insert($table,$cols){
     global $pdo;
-    $sql="insert into `{$table}` ";
-    $sql.="values('".join("','",$cols)."')";
+    $sql = "INSERT INTO`{$table}` ";
+    $sql .= "(`" . join("`,`", array_keys($cols)) . "`)";
+    $sql .= " VALUES('" . join("','", $cols) . "')";
+    dd ($cols);
     echo $sql;
 
     return $pdo->exec($sql);
