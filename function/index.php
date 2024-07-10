@@ -17,7 +17,7 @@ include "db.php";
 </head>
 <body>
     <?php
-    dd(all());
+    dd(all('students',"where `id`<5"));
     dd(find(3));
     ?>
 </body>
