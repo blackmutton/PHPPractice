@@ -18,7 +18,8 @@ include "db.php";
 <body>
     <?php
     dd(all('students',"where `id`<5"));
-    dd(find(3));
+    dd(find('students',['uni_id'=>'F200000035', 'parents' => '孔進豐']));
+    dd(find('students',2));
     ?>
 </body>
 </html>
