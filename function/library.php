@@ -1,26 +1,5 @@
-<style>
-    * {
-        font-family: 'Courier New', Courier, monospace;
-    }
-</style>
-<h1>自訂函式</h1>
-
 <?php
-$a=['A','B','C','D','E'];
-$b=[
-    '姓名'=>'陳宇彤',
-    '學號'=>'103001',
-    '數學'=>90,
-    '國文'=>67,
-    '英文'=>56
-];
 
-stars();
-stars('菱形',11);
-stars('矩形',7);
-
-// dd($a);
-// dd($b);
 
 function dd($array){
     echo "<pre>";
