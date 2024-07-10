@@ -13,15 +13,15 @@ function all($table,$where){
 
 function find($table,$arg){
     global $pdo;
-    // $sql="select * from `dept` where `id` ={$id}";
+    $sql="select * from `dept` where ";
     if(is_array($arg)){
         foreach($arg as $key=>$value){
             $tmp[]="`$key`='{$value}'";
             dd($tmp);
         }
-        $sql="select * from `{$table}` where".join(" && ",$tmp);
+        $sql.=join(" && ",$tmp);
     }else{
-        $sql="select * from `{$table}` where `id` ='{$arg}'";
+        $sql.=" `id` ='{$arg}'";
     }
     echo $sql;
     $row=$pdo->query($sql)->fetch(PDO::FETCH_ASSOC);
