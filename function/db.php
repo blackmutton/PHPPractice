@@ -29,6 +29,29 @@ function find($table,$arg){
     return $row;
 }
 
+function update($table,$cols,$arg){
+    global $pdo;
+
+    $sql="update `{$table}` set ";
+
+    foreach($cols as $key =>$value){
+        $tt[]="`$key`='{$value}'";
+        dd($tt);
+    }
+    $sql.=join(",",$tt);
+
+    if(is_array($arg)){
+        foreach($arg as $key=>$value){
+            $tt[]="`$key`='{$value}'";
+            dd($tt);
+        }
+        $sql.=" where ".join(" && ",$tmp);
+    }else{
+        $sql.=" where `id`='{$arg}'";
+    }
+    return $pdo->exec($sql);
+}
+
 function dd($array){
     echo "<pre>";
     print_r($array);
