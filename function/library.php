@@ -58,4 +58,13 @@ function stars($shape='三角形',$stars=7){
                 break;
     }
 }
+
+function sum(...$args){
+    $sum=0;
+    foreach($args as $arg){
+        $sum+=$arg;
+
+    }
+    return $sum;
+}
 ?>
