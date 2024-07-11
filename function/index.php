@@ -20,6 +20,11 @@ include "db.php";
     dd(all('students',"where `id`<5"));
     dd(find('students',['uni_id'=>'F200000035', 'parents' => '孔進豐']));
     dd(find('students',2));
+    // dd(insert('dept', ['code' => '801', 'name' => '綜合演藝學系']));
+    dd(update('dept',['code' => '802'], ['code' => '801']));
+    update('students', ['dept' => '2'], ['dept' => '1']);
+    del('dept',['code'=>'802']);
+
     ?>
 </body>
 </html>
