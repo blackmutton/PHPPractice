@@ -17,13 +17,20 @@ include "db.php";
 </head>
 <body>
     <?php
+    echo "all('students','where `id`<5')<br>";
     dd(all('students',"where `id`<5"));
+    echo "find('students',['uni_id'=>'F200000035', 'parents' => '孔進豐'])<br>";
     dd(find('students',['uni_id'=>'F200000035', 'parents' => '孔進豐']));
+    echo "find('students',2)<br>";
     dd(find('students',2));
     // dd(insert('dept', ['code' => '801', 'name' => '綜合演藝學系']));
+    echo "update('dept',['code' => '802'], ['code' => '801'])<br>";
     dd(update('dept',['code' => '802'], ['code' => '801']));
     update('students', ['dept' => '2'], ['dept' => '1']);
     del('dept',['code'=>'802']);
+    echo "q('select * from `students` where `dept`='3'  order by `id` desc limit 10')<br>";
+    dd(q("select * from `students` where `dept`='3'  order by `id` desc limit 10"));
+
 
     ?>
 </body>

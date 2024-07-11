@@ -6,6 +6,7 @@ $pdo=new PDO($dsn,'root','');
 function all($table,$where){
     global $pdo;
     $sql="select * from `{$table}` {$where}";
+    echo $sql;
     $rows=$pdo->query($sql)->fetchAll(PDO::FETCH_ASSOC);
 
     return $rows;
@@ -15,15 +16,14 @@ function find($table,$arg){
     global $pdo;
     $sql="select * from `$table` where ";
     if(is_array($arg)){
-        foreach($arg as $key=>$value){
-            $tmp[]="`$key`='{$value}'";
-            // dd($tmp);
-        }
+        $tmp=array2sql($arg);
+        echo "\$tmp"."<br>";
+    print_r($tmp);
         $sql.=join(" && ",$tmp);
     }else{
         $sql.=" `id` ='{$arg}'";
     }
-    // echo $sql;
+    echo $sql;
     $row=$pdo->query($sql)->fetch(PDO::FETCH_ASSOC);
 
     return $row;
@@ -34,17 +34,15 @@ function update($table,$cols,$arg){
 
     $sql="update `{$table}` set ";
 
-    foreach($cols as $key =>$value){
-        $tmp[]="`$key`='{$value}'";
-        dd($tmp);
-    }
+    $tmp=array2sql($cols);
+    echo "\$tmp"."<br>";
+    print_r($tmp);
     $sql.=join(",",$tmp);
 
     if(is_array($arg)){
-        foreach($arg as $key=>$value){
-            $tt[]="`$key`='{$value}'";
-            dd($tt);
-        }
+        $tt=array2sql($arg);
+        echo "\$tt"."<br>";
+    print_r($tt);
         $sql.=" where ".join(" && ",$tt);
     }else{
         $sql.=" where `id`='{$arg}'";
@@ -67,9 +65,9 @@ function del($table,$arg){
 global $pdo;
 $sql="delete from `{$table}` where ";
 if(is_array($arg)){
-    foreach($arg as $key => $value){
-        $tmp[]="`$key`='{$value}'";
-    }
+    $tmp=array2sql($arg);
+    echo "\$tmp"."<br>";
+    print_r($tmp);
     $sql.=join(" && ",$tmp);
 }else{
     $sql.=" `id`='{$arg}'";
@@ -82,5 +80,26 @@ function dd($array){
     echo "<pre>";
     print_r($array);
     echo "</pre>";
+}
+
+function save($table,$array){
+    if(isset($array['id'])){
+        update($table,$array,$array['id']);
+    }else{
+        insert($table,$array);
+    }
+}
+
+function array2sql($array){
+    foreach($array as $key=>$value){
+        $tmp[]="`$key`='$value'";
+    }
+
+    return $tmp;
+}
+
+function q($sql){
+    global $pdo;
+    return $pdo->query($sql)->fetchAll();
 }
 ?>
