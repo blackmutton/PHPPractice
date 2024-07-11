@@ -16,7 +16,8 @@ class DB{
             print_r($arg[0]);
             foreach($arg[0] as $key =>$value){
                 
-                $tmp[]="`$key`='$value'";
+                // $tmp[]="`$key`='$value'";
+                $tmp=$this->array2sql($arg[0]);
                 print_r($tmp);
             }
             $sql=$sql." where ".join(" && ",$tmp);
@@ -41,6 +42,41 @@ class DB{
         echo $sql;
         return $this->pdo->query($sql)->fetch(PDO::FETCH_ASSOC);
     }
+    function save($array){
+        if(isset($array['id'])){
+            // update
+            $sql="update `{$this->table}` set ";
+
+            // 使用迴圈將欄位名稱和值組合成字串
+            $tmp=$this->array2sql($array);
+            $sql.=join(",",$tmp);
+            $sql.=" where `id` ='{$array['id']}'";
+        }else{
+            // insert
+            $sql="insert into `{$this->table}`";
+            $sql.="(`".join(`,`,array_keys($array))."`)";
+            $sql.=" values('".join("','",$array)."')";
+        }
+        echo $sql;
+        return $this->pdo->exec($sql);
+    }
+
+    function del($arg){
+        $sql="delete from `{$this->table}` where ";
+
+        if(is_array($arg)){
+            $tmp=$this->array2sql($arg);
+            $sql.=join(" && ",$tmp);
+        }else{
+            $sql.=" `id`='{$arg}'";
+        }
+        echo $sql;
+        return $this->pdo->exec($sql);
+    }
+
+    function q($sql){
+        return $this->pdo->query($sql)->fetchAll();
+    }
 
     protected function array2sql($array){
         foreach($array as $key => $value){
@@ -48,13 +84,21 @@ class DB{
         }
         return $tmp;
     }
+
+    function dd($array){
+        echo "<pre>";
+        print_r($array);
+        echo "</pre>";
+    }
 }
 
 $Student=new DB('students');
+$Dept=new DB('dept');
 echo "<pre>";
 print_r($Student->find(['id' => '5']));
 echo "</pre>";
 echo "<pre>";
-print_r($Student->all(['graduate_at'=> '14' ,'status_code'=>'001'],' order by `id` desc'));
+// print_r($Student->all(['graduate_at'=> '14' ,'status_code'=>'001'],' order by `id` desc'));
+$Dept->del(21);
 echo "</pre>";
 ?>
