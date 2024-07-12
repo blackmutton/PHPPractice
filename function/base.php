@@ -77,6 +77,20 @@ class DB{
     function q($sql){
         return $this->pdo->query($sql)->fetchAll();
     }
+    function count(...$arg){
+        $sql="select count(*) from `{$this->table}`";
+
+        if(!empty($arg[0])&& is_array($arg[0])){
+            $tmp=$this->array2sql($arg[0]);
+            print_r($tmp) ;
+            $sql=$sql. " where ".implode(" && ",$tmp);
+        }
+        if(!empty($arg[1])){
+            $sql=$sql.$arg[1];
+        }
+        echo $sql;
+        return $this->pdo->query($sql)->fetchColumn();
+    }
 
     protected function array2sql($array){
         foreach($array as $key => $value){
@@ -101,4 +115,5 @@ echo "<pre>";
 // print_r($Student->all(['graduate_at'=> '14' ,'status_code'=>'001'],' order by `id` desc'));
 $Dept->del(21);
 echo "</pre>";
+echo $Student->count(['dept'=>2]);
 ?>
