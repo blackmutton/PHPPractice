@@ -112,14 +112,14 @@ class DB{
 $Student=new DB('students');
 $Dept=new DB('dept');
 echo "<pre>";
-print_r($Student->find(['id' => '5']));
+// print_r($Student->find(['id' => '5']));
 echo "</pre>";
 echo "<pre>";
-print_r($Student->all(['graduate_at'=> '14' ,'status_code'=>'001'],' order by `id` desc'));
-$Dept->del(21);
+// print_r($Student->all(['graduate_at'=> '14' ,'status_code'=>'001'],' order by `id` desc'));
+// $Dept->del(21);
 echo "</pre>";
-echo $Student->count(['dept'=>2]);
+// echo $Student->count(['dept'=>2]);
 echo "<br>";
 
-echo $Student->math('max','graduate_at'); 
+// echo $Student->math('max','graduate_at'); 
 ?>
